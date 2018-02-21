@@ -1,0 +1,95 @@
+<h2 class="text-center">DASHBOARD</h2>
+
+<form class="form-inline">
+  <div class="form-group row">
+    <label for="example-text-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <input class="form-control" [(ngModel)]="firstName" name="firstName" type="text" placeholder="firstName" id="example-text-input">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-search-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <input class="form-control" [(ngModel)]="lastName" name="lastName" type="text" placeholder="lastName" id="example-search-input">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-email-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <input class="form-control" [(ngModel)]="username" name="username" type="text" placeholder="username" id="example-email-input">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="example-email-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <input class="form-control" [(ngModel)]="age" name="age" type="text" placeholder="age" id="example-email-input">
+    </div>
+  </div>
+  <br> <br> <br>
+  <div class="form-group row">
+    <label for="example-email-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <input class="form-control" [(ngModel)]="phone" name="phone" type="text" placeholder="phone" id="example-email-input">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="example-email-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <input class="form-control" [(ngModel)]="emergencyNo" name="emergencyNo" type="text" placeholder="Age" id="example-email-input">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="example-email-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <input class="form-control" [(ngModel)]="fee" name="fee" type="text" placeholder="fee" id="example-email-input">
+    </div>
+  </div>
+  <br><br><br>
+  <div class="col-12 float-right">
+  
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary float-right" (click)="addStudent( studentsData )">Add Student</button>
+    </div>
+  </div>
+</form>
+
+  <!--<app-spinner> </app-spinner>-->
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Age</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Emergency Call</th>
+      <th scope="col">Fee Detail</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students; let i = index">
+      
+      <th scope="row">{{i+1}}</th>
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.username}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.phone}}</td>
+      <td>{{student.emergencyNo}}</td>
+      <td>${{student.fee}}</td>
+      
+      <td><!--button type="submit" class="btn btn-primary float-left"  (click)="editStudent( updateStudent )" data-toggle="modal" data-target="#editStudent" >Edit Student</button>-->
+          <app-edit-modal [editData]='student'></app-edit-modal>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
